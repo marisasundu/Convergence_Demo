@@ -64,7 +64,7 @@ const popularIdeasMap = {
       {
         name: "Kahlil's idea",
         desc: "A challenging pump track and jump lanes for mountain bike enthusiasts to hone their skills.",
-        img: "./images/fitness1.jpg",
+        img: "./images/fitness1.png",
         likes: 12
       },
       {
