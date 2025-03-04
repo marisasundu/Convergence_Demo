@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Prototype Demo with Back Navigation</title>
+  <style>
+    /* Global styles for the body to center the container and set the background */
+    body {
+      background-color: lightgray;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    /* Container simulating an iPhone screen */
+    #container {
+      width: 375px;
+      height: 812px;
+      background: white;
+      border: 1px solid black;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      position: relative;
+    }
+    /* Common styling for each step/page */
+    .step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      overflow-y: auto;
+    }
+    /* Hide inactive steps */
+    .hidden { 
+      display: none; 
+    }
+    /* Style for clickable idea and option blocks */
+    .idea, .option {
+      background: white;
+      border: 1px solid black;
+      padding: 10px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: border 0.3s, background-color 0.3s;
+      width: 80%;
+      box-sizing: border-box;
+    }
+    .idea:hover, .option:hover {
+      border-color: #A7C7E7; /* pastel blue */
+      background-color: #f0f8ff; /* light pastel blue tint */
+    }
+    /* Header styling */
+    #header {
+      border-bottom: 2px solid black;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    #header h2, #header p {
+      margin: 5px 0;
+      color: black;
+    }
+    /* Style for Back buttons, placed at the bottom */
+    .back-button {
+      background-color: white;
+      border: 1px solid black;
+      color: black;
+      padding: 8px 12px;
+      font-size: 14px;
+      margin-top: 20px;
+      cursor: pointer;
+      width: 80%;
+    }
+    .back-button:hover {
+      border-color: #A7C7E7;
+      background-color: #f0f8ff;
+    }
+    /* Image style for idea selection */
+    .idea img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <!-- Step 1: Idea Selection -->
+    <div id="step1" class="step">
+      <h2>Select an Idea</h2>
+      <div class="idea" data-id="1" data-title="Idea 1" data-description="Description for Idea 1">
+        <img src="../images/firepit.png" alt="Idea 1">
+        <p>Idea 1</p>
+      </div>
+      <div class="idea" data-id="2" data-title="Idea 2" data-description="Description for Idea 2">
+        <img src="https://via.placeholder.com/100" alt="Idea 2">
+        <p>Idea 2</p>
+      </div>
+      <div class="idea" data-id="3" data-title="Idea 3" data-description="Description for Idea 3">
+        <img src="https://via.placeholder.com/100" alt="Idea 3">
+        <p>Idea 3</p>
+      </div>
+    </div>
+
+    <!-- Step 2: Option Selection -->
+    <div id="step2" class="step hidden">
+      <div id="header">
+        <h2 id="selectedIdeaTitle"></h2>
+        <p id="selectedIdeaDescription"></p>
+      </div>
+      <h3>Select an Option</h3>
+      <div class="option" data-option="1">Option 1</div>
+      <div class="option" data-option="2">Option 2</div>
+      <div class="option" data-option="3">Option 3</div>
+      <div class="option" data-option="4">Option 4</div>
+      <div class="option" data-option="5">Option 5</div>
+      <!-- Back button placed at the bottom of Step 2 -->
+      <button id="backToStep1" class="back-button">Back</button>
+    </div>
+
+    <!-- Step 3: Additional Content Page -->
+    <div id="step3" class="step hidden">
+      <div id="header">
+        <h2 id="selectedIdeaTitle2"></h2>
+        <p id="selectedIdeaDescription2"></p>
+      </div>
+      <h3>Additional Content</h3>
+      <p>This page shows content that remains the same regardless of the option selected.</p>
+      <!-- Back button placed at the bottom of Step 3 -->
+      <button id="backToStep2" class="back-button">Back</button>
+    </div>
+  </div>
+
+  <script>
+    // Global variable to store the selected idea's data
+    let selectedIdea = {};
+
+    // Step 1: When an idea is clicked...
+    document.querySelectorAll('.idea').forEach(idea => {
+      idea.addEventListener('click', function() {
+        // Store the idea's data from its data attributes
+        selectedIdea = {
+          id: this.dataset.id,
+          title: this.dataset.title,
+          description: this.dataset.description
+        };
+        // Update the header on step 2 with the selected idea's details
+        document.getElementById('selectedIdeaTitle').innerText = selectedIdea.title;
+        document.getElementById('selectedIdeaDescription').innerText = selectedIdea.description;
+        // Also update the header on step 3 so the idea is shown on subsequent pages
+        document.getElementById('selectedIdeaTitle2').innerText = selectedIdea.title;
+        document.getElementById('selectedIdeaDescription2').innerText = selectedIdea.description;
+
+        // Hide Step 1 and show Step 2
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.remove('hidden');
+      });
+    });
+
+    // Step 2: When an option is clicked...
+    document.querySelectorAll('.option').forEach(option => {
+      option.addEventListener('click', function() {
+        // Optionally capture which option was chosen
+        const selectedOption = this.dataset.option;
+        console.log("Selected Option: ", selectedOption);
+        // Hide Step 2 and show Step 3
+        document.getElementById('step2').classList.add('hidden');
+        document.getElementById('step3').classList.remove('hidden');
+      });
+    });
+
+    // Back button on Step 2 to return to Step 1
+    document.getElementById('backToStep1').addEventListener('click', function() {
+      document.getElementById('step2').classList.add('hidden');
+      document.getElementById('step1').classList.remove('hidden');
+    });
+
+    // Back button on Step 3 to return to Step 2
+    document.getElementById('backToStep2').addEventListener('click', function() {
+      document.getElementById('step3').classList.add('hidden');
+      document.getElementById('step2').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>

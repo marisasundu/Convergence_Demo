@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DreamPark Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Inter:wght@100;200;300;400;500;700&display=swap' rel='stylesheet'>
+</head>
+<body>
+  <div id="container">
+    <!-- Frame 1: DreamPark Idea -->
+    <div id="frame1" class="frame active">
+        <br>
+        <br>
+      <h1 class="title">This is your DreamPark idea.</h1>
+      <div class="underline"></div>
+      <br><br>
+      <div class="idea-rectangle">
+        <div class="idea-image">
+          <img src="../images/firepit.png" alt="Idea Image">
+        </div>
+        <div class="idea-info">
+          <div class="profile">
+            <img src="../images/profile.png" alt="Profile Picture">
+            <span>Sam</span>
+          </div>
+          <div class="idea-description">
+            Flat community areas that large groups can reserve and gather, with firepits, varied seating, tables, and lights for after dark.
+          </div>
+        </div>
+      </div>
+      <br><br><br>
+      <button id="continueButton" class="continue">Continue</button>
+    </div>
+    <!-- Frame 2: Thank You & Recap -->
+    <div id="frame2" class="frame">
+        <br><br><br>
+      <div class="idea-rectangle2">
+        <div class="idea-strip">Your idea</div>
+        <div class="idea-details">
+          <div class="thumb">
+            <img src="../images/firepit.png" alt="Idea Thumbnail">
+          </div>
+          <div class="desc">
+            Flat community areas that large groups can reserve and gather, with firepits, varied seating, tables, and lights for after dark.
+          </div>
+        </div>
+      </div>
+      <p class="message">
+        Thanks for sharing your idea!<br><br>
+        To better understand what matters most to you, let’s explore the values behind your idea.
+      </p>
+      <!-- Continue button first -->
+      <button id="continueButtonFrame2" class="continue">Continue</button>
+      <!-- Back button below the continue button -->
+      <button id="backButton" class="back">Back</button>
+    </div>
+  </div>
+
+  <script>
+    // Grab frame elements
+    const frame1 = document.getElementById('frame1');
+    const frame2 = document.getElementById('frame2');
+    // Buttons
+    const continueButton = document.getElementById('continueButton');
+    const continueButtonFrame2 = document.getElementById('continueButtonFrame2');
+    const backButton = document.getElementById('backButton');
+
+    // Advance from Frame 1 to Frame 2
+    continueButton.addEventListener('click', function() {
+      frame1.classList.remove('active');
+      frame2.classList.add('active');
+    });
+    // Back from Frame 2 to Frame 1
+    backButton.addEventListener('click', function() {
+      frame2.classList.remove('active');
+      frame1.classList.add('active');
+    });
+    // For demonstration, the continue button on frame 2 logs a message.
+    continueButtonFrame2.addEventListener('click', function() {
+      console.log("Continue from Frame 2 clicked.");
+    });
+  </script>
+</body>
+</html>

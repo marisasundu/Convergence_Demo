@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DreamPark Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Inter:wght@100;200;300;400;500;700&display=swap' rel='stylesheet'>
+</head>
+<body>
+  <div id="container">
+    <!-- Frame 1: DreamPark Idea -->
+    <div id="frame1" class="frame active">
+      <br><br>
+      <h1 class="title">This is your DreamPark idea.</h1>
+      <div class="underline"></div>
+      <br><br>
+      <div class="idea-rectangle">
+        <div class="idea-image">
+          <img src="../images/firepit.png" alt="Idea Image">
+        </div>
+        <div class="idea-info">
+          <div class="profile">
+            <img src="../images/profile.png" alt="Profile Picture">
+            <span>Sam</span>
+          </div>
+          <div class="idea-description">
+            Flat community areas that large groups can reserve and gather, with firepits, varied seating, tables, and lights for after dark.
+          </div>
+        </div>
+      </div>
+      <br><br><br>
+      <button id="continueButton" class="continue">Continue</button>
+    </div>
+    
+    <!-- Frame 2: Thank You & Recap -->
+    <div id="frame2" class="frame">
+      <br><br><br>
+      <div class="idea-rectangle2">
+        <div class="idea-strip">Your idea</div>
+        <div class="idea-details">
+          <div class="thumb">
+            <img src="../images/firepit.png" alt="Idea Thumbnail">
+          </div>
+          <div class="desc">
+            Flat community areas that large groups can reserve and gather, with firepits, varied seating, tables, and lights for after dark.
+          </div>
+        </div>
+      </div>
+      <p class="message">
+        Thanks for sharing your idea!<br><br>
+        To better understand what matters most to you, let’s explore the values behind your idea.
+      </p>
+      <br>
+      <button id="continueButtonFrame2" class="continue">Continue</button>
+      <button id="backButton" class="back">Back</button>
+    </div>
+    
+    <!-- Frame 3: Choose an Idea -->
+    <div id="frame3" class="frame">
+      <br>
+      <p class="message">
+        To better understand what matters most to you, let’s explore the values behind your idea.<br><br>
+        <span style="font-style: italic;">Select one idea to explore.</span>
+      </p>
+      <div class="idea" data-id="1" data-title="Idea 1" data-description="Description for Idea 1">
+        <div class="idea-rectangle2">
+          <div class="idea-strip">Your idea</div>
+          <div class="idea-details">
+            <div class="thumb">
+              <img src="../images/firepit.png" class="idea-card-image" alt="Idea Thumbnail">
+            </div>
+            <div class="desc">
+              Flat community areas that large groups can reserve and gather, with firepits, varied seating, tables, and lights for after dark.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="idea" data-id="2" data-title="Idea 2" data-description="Description for Idea 2">
+        <div class="idea-rectangle2">
+          <div class="idea-strip">Your idea</div>
+          <div class="idea-details">
+            <div class="thumb">
+              <img src="../images/trails.png" alt="Idea Thumbnail">
+            </div>
+            <div class="desc">
+              Create a trail head with native plant species. Informational placards can be made on the importance of native habitats.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="idea" data-id="3" data-title="Idea 3" data-description="Description for Idea 3">
+        <div class="idea-rectangle2">
+          <div class="idea-strip">Your idea</div>
+          <div class="idea-details">
+            <div class="thumb">
+              <img src="../images/disc-golf.png" alt="Idea Thumbnail">
+            </div>
+            <div class="desc">
+              This would be a great location for a disc golf course! With some wooden and metal sculptures.
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <button id="continueButtonFrame3" class="continue">Continue</button>
+      <button id="backButtonFrame3" class="back">Back</button>
+    </div>
+    
+    <!-- Frame 5: Choose a Value -->
+    <div id="frame5" class="frame">
+      <!-- Auto-populated idea card from Frame 3 selection -->
+      <div id="ideaCardFrame5" class="idea-card">
+        <!-- Will be populated via JS -->
+      </div>
+      <h2>Select a Value</h2>
+      <!-- Example clickable values -->
+      <div class="option value-option" data-value="Community">Community</div>
+      <div class="option value-option" data-value="Sustainability">Sustainability</div>
+      <div class="option value-option" data-value="Innovation">Innovation</div>
+      <div class="option value-option" data-value="Accessibility">Accessibility</div>
+      <div class="option value-option" data-value="Creativity">Creativity</div>
+      <button id="continueButtonFrame5" class="continue">Continue</button>
+      <button id="backButtonFrame5" class="back">Back</button>
+    </div>
+    
+    <!-- Frame 6: Choose an Activity -->
+    <div id="frame6" class="frame">
+      <!-- Auto-populated idea card from Frame 3 selection -->
+      <div id="ideaCardFrame6" class="idea-card">
+        <!-- Will be populated via JS -->
+      </div>
+      <h2>Select an Activity</h2>
+      <!-- Example clickable activities -->
+      <div class="option activity-option" data-activity="Activity A">Activity A</div>
+      <div class="option activity-option" data-activity="Activity B">Activity B</div>
+      <div class="option activity-option" data-activity="Activity C">Activity C</div>
+      <div class="option activity-option" data-activity="Activity D">Activity D</div>
+      <div class="option activity-option" data-activity="Activity E">Activity E</div>
+      <button id="continueButtonFrame6" class="continue">Continue</button>
+      <button id="backButtonFrame6" class="back">Back</button>
+    </div>
+    
+  </div>
+  
+  <script>
+    // Global variables to store selections
+    let selectedIdea = {};
+    let selectedValue = "";
+    let selectedActivity = "";
+    
+    // Grab frame elements
+    const frame1 = document.getElementById('frame1');
+    const frame2 = document.getElementById('frame2');
+    const frame3 = document.getElementById('frame3');
+    const frame5 = document.getElementById('frame5');
+    const frame6 = document.getElementById('frame6');
+    
+    // Grab button elements
+    const continueButton = document.getElementById('continueButton');
+    const continueButtonFrame2 = document.getElementById('continueButtonFrame2');
+    const backButton = document.getElementById('backButton');
+    const continueButtonFrame3 = document.getElementById('continueButtonFrame3');
+    const backButtonFrame3 = document.getElementById('backButtonFrame3');
+    const continueButtonFrame5 = document.getElementById('continueButtonFrame5');
+    const backButtonFrame5 = document.getElementById('backButtonFrame5');
+    const continueButtonFrame6 = document.getElementById('continueButtonFrame6');
+    const backButtonFrame6 = document.getElementById('backButtonFrame6');
+    
+    // Frame 1 -> Frame 2
+    continueButton.addEventListener('click', function() {
+      frame1.classList.remove('active');
+      frame2.classList.add('active');
+    });
+    
+    // Frame 2 -> Frame 1 (Back)
+    backButton.addEventListener('click', function() {
+      frame2.classList.remove('active');
+      frame1.classList.add('active');
+    });
+    
+    // Frame 2 -> Frame 3
+    continueButtonFrame2.addEventListener('click', function() {
+      frame2.classList.remove('active');
+      frame3.classList.add('active');
+    });
+    
+    // In Frame 3, when an idea is clicked:
+    document.querySelectorAll('#frame3 .idea').forEach(idea => {
+      idea.addEventListener('click', function() {
+        // Remove selection from all ideas in Frame 3
+        document.querySelectorAll('#frame3 .idea').forEach(el => el.classList.remove('selected'));
+        this.classList.add('selected');
+        selectedIdea = {
+          id: this.dataset.id,
+          title: this.dataset.title,
+          description: this.dataset.description
+        };
+        console.log("Selected idea:", selectedIdea);
+      });
+    });
+    
+    // Frame 3 -> Frame 5 (Continue)
+    continueButtonFrame3.addEventListener('click', function() {
+      if (!selectedIdea.title) {
+        alert("Please select an idea.");
+        return;
+      }
+      // Populate idea card in Frame 5 with selected idea details
+      document.getElementById('ideaCardFrame5').innerHTML = `
+        <h2>${selectedIdea.title}</h2>
+        <p>${selectedIdea.description}</p>
+      `;
+      frame3.classList.remove('active');
+      frame5.classList.add('active');
+    });
+    
+    // Frame 3 -> Frame 2 (Back)
+    backButtonFrame3.addEventListener('click', function() {
+      frame3.classList.remove('active');
+      frame2.classList.add('active');
+    });
+    
+    // Value selection in Frame 5
+    const valueOptions = document.querySelectorAll('#frame5 .value-option');
+    valueOptions.forEach(item => {
+      item.addEventListener('click', function() {
+        // Remove previous selection highlight
+        valueOptions.forEach(o => o.classList.remove('selected'));
+        this.classList.add('selected');
+        selectedValue = this.dataset.value;
+        console.log("Selected value:", selectedValue);
+      });
+    });
+    
+    // Frame 5 -> Frame 6 (Continue)
+    continueButtonFrame5.addEventListener('click', function() {
+      if (!selectedValue) {
+        alert("Please select a value.");
+        return;
+      }
+      // Populate idea card in Frame 6 with selected idea details
+      document.getElementById('ideaCardFrame6').innerHTML = `
+        <h2>${selectedIdea.title}</h2>
+        <p>${selectedIdea.description}</p>
+      `;
+      frame5.classList.remove('active');
+      frame6.classList.add('active');
+    });
+    
+    // Frame 5 -> Frame 3 (Back)
+    backButtonFrame5.addEventListener('click', function() {
+      frame5.classList.remove('active');
+      frame3.classList.add('active');
+    });
+    
+    // Activity selection in Frame 6
+    const activityOptions = document.querySelectorAll('#frame6 .activity-option');
+    activityOptions.forEach(item => {
+      item.addEventListener('click', function() {
+        // Remove previous selection highlight
+        activityOptions.forEach(o => o.classList.remove('selected'));
+        this.classList.add('selected');
+        selectedActivity = this.dataset.activity;
+        console.log("Selected activity:", selectedActivity);
+      });
+    });
+    
+    // Frame 6 -> Final Step (Continue)
+    continueButtonFrame6.addEventListener('click', function() {
+      if (!selectedActivity) {
+        alert("Please select an activity.");
+        return;
+      }
+      alert("You chose Value: " + selectedValue + "\nActivity: " + selectedActivity);
+      // Here you could proceed to a final confirmation screen.
+    });
+    
+    // Frame 6 -> Frame 5 (Back)
+    backButtonFrame6.addEventListener('click', function() {
+      frame6.classList.remove('active');
+      frame5.classList.add('active');
+    });
+    
+  </script>
+</body>
+</html>

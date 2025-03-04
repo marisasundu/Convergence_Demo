@@ -1,0 +1,269 @@
+
+    /* Global Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: rgb(219, 218, 218);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Inter', sans-serif;
+    }
+    /* Container simulating an iPhone screen */
+    #container {
+      width: 375px;
+      height: 812px;
+      background: rgb(242,242,242);
+      /* border: 1px solid black; */
+      box-sizing: border-box;
+      padding: 20px;
+      position: relative;
+      overflow-y: auto;
+    }
+    /* Frame styling: only the active frame is shown */
+    .frame {
+      display: none;
+      height: 100%;
+    }
+    .frame.active {
+      display: block;
+    }
+    /* Button Styles */
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .continue {
+      background-color: rgb(44,44,44);
+      color: white;
+      width: 200px;
+    }
+    .back {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+      width: 200px;
+
+    }
+    /* Title and Underline for Frame 1 */
+    .title {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    .underline {
+      width: 80%;
+      margin: 10px auto 20px;
+      border-bottom: 3px dashed #A7C7E7;
+    }
+    /* Idea Rectangle in Frame 1 */
+    .idea-rectangle {
+      width: 100%;
+      height: 50%;
+      /* border: 1px solid black; */
+      background-color: white;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+    .idea-image {
+      flex: 2;
+      background: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .idea-image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: 5px 5px 0 0
+    }
+    .idea-info {
+      flex: 1;
+      /* border-top: 1px solid black; */
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+    /* Updated Profile: stacked vertically */
+    .profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* added to center vertically */
+  margin: 10px;
+}
+
+    .profile img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 5px;
+      /* border: 1px solid black; */
+    }
+    .profile span {
+      font-size: 12px;
+      color: black;
+    }
+    .idea-description {
+      font-size: 14px;
+      font-weight: 100;
+      text-align: left;
+      flex: 1;
+      padding: 14px;
+      color: black;
+      align-self: center;
+    }
+    /* Frame 2: Thank You & Recap */
+    .idea-rectangle2 {
+      width: 100%;
+      height: 150px;
+      border: 1px solid lightgray;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      overflow: hidden;
+      /* margin-bottom: 20px; */
+    }
+    .idea-strip {
+      background-color: #A7C7E7;
+      padding: 8px;
+      font-size: 16px;
+      color: black;
+      font-weight: bold;
+      text-align: left;
+    }
+    .idea-details {
+      display: flex;
+      /* padding: 10px; */
+      box-sizing: border-box;
+    }
+    .idea-card-image {
+        height: auto;
+    }
+    .thumb {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-right: 5px;
+    }
+    .thumb img {
+      width: 149px;
+      height: 118px;
+      object-fit: cover;
+    }
+    .desc {
+      flex: 2;
+      font-size: 12px;
+      text-align: left;
+      padding: 15px;
+      color: black;
+    }
+    .message {
+      font-size: 14px;
+      color: black;
+      margin: 10px 0 20px;
+      text-align: left;
+      line-height: 1.4;
+    }
+    /* Apply to ideas in Frame 3 */
+    .idea {
+        background-color: white;
+        width: 100%;
+        height: 150px;
+      overflow: hidden;
+
+        /* border: 1px solid lightgray; */
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        border: none; /* remove default border */
+        /* padding: 10px; */
+        margin: 10px 0;
+        cursor: pointer;
+        /* transition: border 0.3s, background-color 0.3s; */
+        /* width: 80%; */
+        box-sizing: border-box;
+        /* border-radius: 8px; filleted (rounded) corners */
+      }
+      .option {
+        display: flex;
+        text-align: center;
+        align-items: center;      /* Center items vertically */
+        justify-content: center;  /* Center items horizontally */
+        background-color: white;
+        border-radius: 5px;
+        height: 30px;
+        padding: 10px;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+      .idea.selected, .option.selected {
+        border: 1px solid rgb(44,44,44);
+      }
+      .value-tag {
+        font-size: 16px;
+        color: #333;
+        padding: 5px 10px;
+        margin: 10px 0;
+        border-radius: 4px;
+        text-align: center;
+        display: inline-block;
+      }
+      
+      
+#frame3 .idea {
+    width: 100%;
+    height: 150px;
+    /* border: 1px solid black; */
+    /* overflow: hidden; */
+    background-color: transparent;
+    /* margin-bottom: 20px; */
+    cursor: pointer;
+    /* transition: border 0.3s; */
+  }
+  #frame3 .idea.selected {
+    border: 1px solid rgb(44,44,44);
+  }
+  
+  
+/* 
+    @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      .frame.active {
+        animation: slideIn 0.5s ease-out;
+      }
+
+      @keyframes slideOut {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+      
+      .slide-out {
+        animation: slideOut 0.5s ease-out forwards;
+      } */
+      
+      
