@@ -1,66 +1,188 @@
+let communitySuggestionsHTML = "";
+const popularIdeasMap = {
+    "Achievement/learning": [
+      {
+        name: "Ann's idea",
+        desc: "A covered pavilion for live painting, sketching, or craft workshops would be a great way to encourage creativity in the park.",
+        img: "../images/achievement1.webp",
+        likes: 18
+      },
+      {
+        name: "Marcus's idea",
+        desc: "An open-air amphitheater for music, storytelling, and cultural performances to inspire and educate.",
+        img: "../images/achievement2.png",
+        likes: 12
+      },
+      {
+        name: "Juliana's idea",
+        desc: "A disc golf course would be fantastic—an awesome and quickly growing sport for people of all ages.",
+        img: "../images/achievement3.png",
+        likes: 22
+      }
+    ],
+    "Escape": [
+      {
+        name: "Xiaohan's idea",
+        desc: "A scenic viewpoint overlooking the Otay River would be a peaceful retreat away from the crowds.",
+        img: "../images/escape1.png",
+        likes: 15
+      },
+      {
+        name: "Chris's idea",
+        desc: "A garden featuring indigenous plants, providing a calm space for reflection and relaxation.",
+        img: "../images/escape2.png",
+        likes: 10
+      },
+      {
+        name: "Matthew's idea",
+        desc: "Install benches with proper back support, offering a quiet spot for reading and unwinding.",
+        img: "../images/escape3.png",
+        likes: 20
+      }
+    ],
+    "Social": [
+      {
+        name: "Simon's idea",
+        desc: "Eight lighted pickleball courts with fencing and nearby parking—ideal for community play.",
+        img: "../images/social1.png",
+        likes: 25
+      },
+      {
+        name: "Ananya's idea",
+        desc: "Reservable picnic areas with long tables for group meals and celebrations.",
+        img: "../images/social2.png",
+        likes: 18
+      },
+      {
+        name: "Naomi's idea",
+        desc: "Sports fields for community recreation and events where neighbors can gather.",
+        img: "../images/social3.png",
+        likes: 30
+      }
+    ],
+    "Physical fitness": [
+      {
+        name: "Kahlil's idea",
+        desc: "A challenging pump track and jump lanes for mountain bike enthusiasts to hone their skills.",
+        img: "../images/fitness1.jpg",
+        likes: 12
+      },
+      {
+        name: "Maria's idea",
+        desc: "Dedicated courts for handball or racquetball to keep physically active.",
+        img: "../images/fitness2.png",
+        likes: 16
+      },
+      {
+        name: "Oscar's idea",
+        desc: "Exciting downhill mountain bike trails to test your endurance and agility.",
+        img: "../images/fitness3.png",
+        likes: 14
+      }
+    ],
+    "Nature": [
+      {
+        name: "Ethan's idea",
+        desc: "Restore areas along the Otay River to native wetlands to support local wildlife and ecology.",
+        img: "../images/nature1.png",
+        likes: 20
+      },
+      {
+        name: "Daniela's idea",
+        desc: "Create a trail system with plants and interpretive signs about the ecosystem.",
+        img: "../images/nature2.png",
+        likes: 22
+      },
+      {
+        name: "Kai's idea",
+        desc: "A scenic viewpoint where visitors can enjoy expansive views and the tranquility of nature.",
+        img: "../images/nature3.png",
+        likes: 19
+      }
+    ]
+  };
+  
+
 function populateCommunitySuggestions() {
     const suggestionsContainer = document.getElementById('communitySuggestions');
     suggestionsContainer.innerHTML = ""; // Clear any old suggestions
-    document.getElementById('frame7Subtitle').innerText = `You selected: ${selectedValue}`;
+    // document.getElementById('frame7Subtitle').innerText = `Value: ${selectedValue}`;
+    const valueTagFrame7 = document.getElementById('valueTagFrame7');
+    valueTagFrame7.innerText = selectedValue;
+    valueTagFrame7.style.backgroundColor = valueColors[selectedValue] || "#ccc";
     
     // Map each value to an array of suggestion objects.
-    const suggestionsMap = {
-      "Achievement/learning": [
-        { name: "Tom's idea", desc: "Gain a sense of self-confidence.", img: "../images/placeholder.png" },
-        { name: "Sarah's idea", desc: "Develop your skills and abilities.", img: "../images/placeholder.png" },
-        { name: "Alex's idea", desc: "Test your abilities and learn what you’re capable of.", img: "../images/placeholder.png" }
-      ],
-      "Escape": [
-        { name: "Mia's idea", desc: "Give your mind a rest.", img: "../images/placeholder.png" },
-        { name: "Jordan's idea", desc: "Have a change from your daily routine.", img: "../images/placeholder.png" },
-        { name: "Priya's idea", desc: "Experience solitude away from crowds.", img: "../images/placeholder.png" }
-      ],
-      "Social": [
-        { name: "Jean's idea", desc: "Do something with your family.", img: "../images/placeholder.png" },
-        { name: "Riley's idea", desc: "Bring your family closer together.", img: "../images/placeholder.png" },
-        { name: "Chris's idea", desc: "Meet other people in your area.", img: "../images/placeholder.png" }
-      ],
-      "Physical fitness": [
-        { name: "Morgan's idea", desc: "Get exercise.", img: "../images/placeholder.png" },
-        { name: "Devon's idea", desc: "Keep physically fit.", img: "../images/placeholder.png" },
-        { name: "Skyler's idea", desc: "Relax and rest physically.", img: "../images/placeholder.png" }
-      ],
-      "Nature": [
-        { name: "Taylor's idea", desc: "View the scenery.", img: "../images/placeholder.png" },
-        { name: "Casey's idea", desc: "Be close to nature.", img: "../images/placeholder.png" },
-        { name: "Alex's idea", desc: "Learn more about nature.", img: "../images/placeholder.png" }
-      ]
-    };
     
-    const chosenSuggestions = suggestionsMap[selectedValue] || [];
+
+    const chosenSuggestions = popularIdeasMap[selectedValue] || [];
     
     // For each suggestion, create an idea card using your .idea-rectangle2 markup.
-    chosenSuggestions.forEach(sugg => {
+    chosenSuggestions.forEach((idea, index) => {
+        const card = document.createElement('div');
+        card.classList.add('idea');
+        card.innerHTML = `
+          <div class="idea-rectangle2" style="position: relative;">
+            <div class="idea-strip" style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: bold;">${idea.name}</span>
+            </div>
+            <div class="idea-details">
+              <div class="thumb">
+                <img src="${idea.img}" class="idea-card-image" alt="Popular Idea Thumbnail">
+              </div>
+              <div class="desc">
+                ${idea.desc}
+              </div>
+            </div>
+          </div>
+          <p class="idea-likes">
+            ${idea.likes} people liked this idea
+          </p>
+        `;
+        card.addEventListener('click', function() {
+          Array.from(suggestionsContainer.children).forEach(c => c.classList.remove('selected'));
+          this.classList.add('selected');
+          favoriteSuggestion = idea.name;
+          console.log("Favorite suggestion chosen:", favoriteSuggestion);
+        });
+        suggestionsContainer.appendChild(card);
+      });
+      communitySuggestionsHTML = suggestionsContainer.innerHTML;
+  }
+
+  function generateFinalSuggestions(value) {
+    const popularIdeasContainer = document.getElementById('popularIdeasContainer');
+    popularIdeasContainer.innerHTML = ""; // Clear previous content
+    
+    // Use the same mapping object as before (popularIdeasMap)
+    const chosenSuggestions = popularIdeasMap[value] || [];
+    
+    chosenSuggestions.forEach((idea, index) => {
+      const rank = index + 1;
       const card = document.createElement('div');
-      card.classList.add('idea'); // Use the same styling as your idea cards
+      card.classList.add('idea');
       card.innerHTML = `
-        <div class="idea-rectangle2">
-          <div class="idea-strip">Suggestion</div>
+        <div class="idea-rectangle2" style="position: relative;">
+          <div class="idea-strip" style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: bold;">${idea.name}</span>
+            <span style="margin-right: 8px; font-weight: bold;">#${rank}</span>
+          </div>
           <div class="idea-details">
             <div class="thumb">
-              <img src="${sugg.img}" class="idea-card-image" alt="Suggestion Thumbnail">
+              <img src="${idea.img}" class="idea-card-image" alt="Popular Idea Thumbnail">
             </div>
             <div class="desc">
-              <strong>${sugg.name}</strong>: ${sugg.desc}
+              ${idea.desc}
             </div>
           </div>
         </div>
+        <p class="idea-likes">
+          ${idea.likes} people liked this idea
+        </p>
       `;
-      // When a suggestion card is clicked, highlight it and store the choice.
-      card.addEventListener('click', function() {
-        Array.from(suggestionsContainer.children).forEach(c => c.classList.remove('selected'));
-        this.classList.add('selected');
-        favoriteSuggestion = sugg.name;
-        console.log("Favorite suggestion chosen:", favoriteSuggestion);
-      });
-      suggestionsContainer.appendChild(card);
+      popularIdeasContainer.appendChild(card);
     });
   }
+  
   
       // -------------------- Global Variables --------------------
       let selectedIdeaHTML = "";
@@ -295,24 +417,20 @@ function populateCommunitySuggestions() {
         });
       });
       
-      continueButtonFrame8.addEventListener('click', function() {
-        if (!selectedBarValue) {
-          alert("Please select a value to see more ideas.");
-          return;
-        }
-        document.getElementById('frame9Title').innerText = 
-          `These are the most popular ideas for the value: ${selectedBarValue}`;
-        
-        const popularIdeasContainer = document.getElementById('popularIdeasContainer');
-        popularIdeasContainer.innerHTML = `
-          <div class="option"><strong>Freya's idea</strong>: Some popular idea for ${selectedBarValue}.</div>
-          <div class="option"><strong>Team's idea</strong>: Another popular idea for ${selectedBarValue}.</div>
-          <div class="option"><strong>Alex's idea</strong>: Another interesting idea for ${selectedBarValue}.</div>
-        `;
-        
-        frame8.classList.remove('active');
-        frame9.classList.add('active');
-      });
+     continueButtonFrame8.addEventListener('click', function() {
+  if (!selectedBarValue) {
+    alert("Please select a value to see more ideas.");
+    return;
+  }
+  document.getElementById('frame9Title').innerText = 
+    `These are the most popular ideas for the value: ${selectedBarValue}`;
+  
+  // Generate final suggestions using the value chosen in Frame 8
+  generateFinalSuggestions(selectedBarValue);
+  
+  frame8.classList.remove('active');
+  frame9.classList.add('active');
+});
       
       backButtonFrame8.addEventListener('click', function() {
         frame8.classList.remove('active');
