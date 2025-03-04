@@ -4,19 +4,19 @@ const popularIdeasMap = {
       {
         name: "Ann's idea",
         desc: "A covered pavilion for live painting, sketching, or craft workshops would be a great way to encourage creativity in the park.",
-        img: "../images/achievement1.webp",
+        img: "./images/achievement1.webp",
         likes: 18
       },
       {
         name: "Marcus's idea",
         desc: "An open-air amphitheater for music, storytelling, and cultural performances to inspire and educate.",
-        img: "../images/achievement2.png",
+        img: "./images/achievement2.png",
         likes: 12
       },
       {
         name: "Juliana's idea",
         desc: "A disc golf course would be fantastic—an awesome and quickly growing sport for people of all ages.",
-        img: "../images/achievement3.png",
+        img: "./images/achievement3.png",
         likes: 22
       }
     ],
@@ -24,19 +24,19 @@ const popularIdeasMap = {
       {
         name: "Xiaohan's idea",
         desc: "A scenic viewpoint overlooking the Otay River would be a peaceful retreat away from the crowds.",
-        img: "../images/escape1.png",
+        img: "./images/escape1.png",
         likes: 15
       },
       {
         name: "Chris's idea",
         desc: "A garden featuring indigenous plants, providing a calm space for reflection and relaxation.",
-        img: "../images/escape2.png",
+        img: "./images/escape2.png",
         likes: 10
       },
       {
         name: "Matthew's idea",
         desc: "Install benches with proper back support, offering a quiet spot for reading and unwinding.",
-        img: "../images/escape3.png",
+        img: "./images/escape3.png",
         likes: 20
       }
     ],
@@ -44,19 +44,19 @@ const popularIdeasMap = {
       {
         name: "Simon's idea",
         desc: "Eight lighted pickleball courts with fencing and nearby parking—ideal for community play.",
-        img: "../images/social1.png",
+        img: "./images/social1.png",
         likes: 25
       },
       {
         name: "Ananya's idea",
         desc: "Reservable picnic areas with long tables for group meals and celebrations.",
-        img: "../images/social2.png",
+        img: "./images/social2.png",
         likes: 18
       },
       {
         name: "Naomi's idea",
         desc: "Sports fields for community recreation and events where neighbors can gather.",
-        img: "../images/social3.png",
+        img: "./images/social3.png",
         likes: 30
       }
     ],
@@ -64,19 +64,19 @@ const popularIdeasMap = {
       {
         name: "Kahlil's idea",
         desc: "A challenging pump track and jump lanes for mountain bike enthusiasts to hone their skills.",
-        img: "../images/fitness1.jpg",
+        img: "./images/fitness1.jpg",
         likes: 12
       },
       {
         name: "Maria's idea",
         desc: "Dedicated courts for handball or racquetball to keep physically active.",
-        img: "../images/fitness2.png",
+        img: "./images/fitness2.png",
         likes: 16
       },
       {
         name: "Oscar's idea",
         desc: "Exciting downhill mountain bike trails to test your endurance and agility.",
-        img: "../images/fitness3.png",
+        img: "./images/fitness3.png",
         likes: 14
       }
     ],
@@ -84,19 +84,19 @@ const popularIdeasMap = {
       {
         name: "Ethan's idea",
         desc: "Restore areas along the Otay River to native wetlands to support local wildlife and ecology.",
-        img: "../images/nature1.png",
+        img: "./images/nature1.png",
         likes: 20
       },
       {
         name: "Daniela's idea",
         desc: "Create a trail system with plants and interpretive signs about the ecosystem.",
-        img: "../images/nature2.png",
+        img: "./images/nature2.png",
         likes: 22
       },
       {
         name: "Kai's idea",
         desc: "A scenic viewpoint where visitors can enjoy expansive views and the tranquility of nature.",
-        img: "../images/nature3.png",
+        img: "./images/nature3.png",
         likes: 19
       }
     ]
