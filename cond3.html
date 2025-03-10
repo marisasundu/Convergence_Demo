@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DreamPark Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Inter:wght@100;200;300;400;500;700&display=swap' rel='stylesheet'>
+</head>
+<body>
+  <div id="container">
+    <!-- Frame 2: Introduction -->
+    <div id="frame2" class="frame active">
+      <br><br>
+      <h1 class="title">Share your opinions for a new park near UC San Diego!</h1>
+      <div class="underline"></div>
+      <p class="message">
+        <br>
+        Let's look at some ideas from your community!
+      </p>
+      <br>
+      <button id="continueButtonFrame2" class="continue">Continue</button>
+    </div>
+    
+    <!-- Frame 7: Community Suggestions -->
+    <div id="frame7" class="frame">
+      <h2>Now let's vote for an idea!</h2>
+      <h3>Here's what others in your community suggested:</h3>
+      <!-- <div id="valueTagFrame7" class="value-tag"></div> -->
+      <div id="communitySuggestions"></div>
+      
+      <button id="continueButtonFrame7" class="continue">Continue</button>
+      <button id="backButtonFrame7" class="back">Back</button>
+    </div>
+    
+    <!-- Frame 8: Community Value Chart -->
+    <!-- <div id="frame8" class="frame">
+      <h2>Thanks for participating!</h2>
+      <p class="message">
+        Here's what other people in your community value.
+        <br><br>
+        Select a value to view the most popular ideas.
+      </p>
+      <div class="option bar-value" data-value="Social">Social (35%)</div>
+      <div class="option bar-value" data-value="Physical fitness">Physical fitness (25%)</div>
+      <div class="option bar-value" data-value="Achievement/learning">Achievement/learning (20%)</div>
+      <div class="option bar-value" data-value="Nature">Nature (10%)</div>
+      <div class="option bar-value" data-value="Escape">Escape (10%)</div>
+      <br><br><br>
+      <button id="continueButtonFrame8" class="continue">View</button>
+      <button id="backButtonFrame8" class="back">Go Back</button>
+    </div> -->
+
+    <!-- Frame 9: Popular Ideas for the Selected Value -->
+    <div id="frame9" class="frame">
+      <h2 id="frame9Title">These are the most popular ideas for the value:</h2>
+      <div id="popularIdeasContainer"></div>
+      <!-- <br> -->
+      <button id="backButtonFrame9" class="back">Go Back</button>
+    </div>
+  </div>
+  <script src="script3.js"></script>
+</body>
+</html>

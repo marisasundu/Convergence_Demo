@@ -1,4 +1,3 @@
-
     /* Global Styles */
     body {
       margin: 0;
@@ -290,5 +289,36 @@
       .slide-out {
         animation: slideOut 0.5s ease-out forwards;
       } */
+      
+.value-description {
+  font-size: 0.8em;  /* Smaller font size */
+  color: #666;
+  margin-top: 2px;   /* Reduced top margin */
+  font-weight: normal;
+  line-height: 1.3;  /* Better line height for readability */
+}
+
+.value-option {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 20px;    /* Increased vertical padding */
+  margin: 8px 0;         /* Added margin between options */
+  border-radius: 8px;    /* Rounded corners */
+}
+
+.value-option.selected .value-description {
+  color: #555;
+}
+
+/* Optional: add subtle hover effect */
+.value-option:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+      
+.likes-count {
+  font-size: 0.9em;
+  color: #666;
+  margin-right: 8px;
+}
       
       
