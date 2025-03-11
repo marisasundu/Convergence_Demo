@@ -102,6 +102,13 @@ const popularIdeasMap = {
     ]
   };
   
+const valueColors = {
+  "Social": "#AEC6CF",             // Pastel blue
+  "Achievement/learning": "#FFB7C5", // Pastel pink
+  "Nature": "#FDFD96",             // Pastel yellow
+  "Physical fitness": "#77DD77",   // Pastel green
+  "Escape": "#FFB347"              // Pastel orange
+};
 
 function populateCommunitySuggestions() {
     const suggestionsContainer = document.getElementById('communitySuggestions');
@@ -231,13 +238,6 @@ if (backButtonFrame2) {
 
 // -------------------- Frame 5: Choose a Value --------------------
 const valueOptions = document.querySelectorAll('#frame5 .value-option');
-const valueColors = {
-"Social": "#AEC6CF",             // Pastel blue
-"Achievement/learning": "#FFB7C5", // Pastel pink
-"Nature": "#FDFD96",             // Pastel yellow
-"Physical fitness": "#77DD77",   // Pastel green
-"Escape": "#FFB347"              // Pastel orange
-};
 
 valueOptions.forEach(item => {
   item.addEventListener('click', function() {
